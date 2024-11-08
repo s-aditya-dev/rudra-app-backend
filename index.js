@@ -1,19 +1,17 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
 import authRoute from "./routes/auth.route.js";
-import userRoute from "./routes/user.route.js";
 import clientRoute from "./routes/client.route.js";
-import userClientRoute from "./routes/userClient.route.js";
 import clientVisitRoute from "./routes/clientVisit.route.js";
-import visitsRoute from "./routes/visits.route.js";
-import visitRemarkRoute from "./routes/visitRemark.route.js";
 import DumpRoute from "./routes/dump.route.js";
 import newClientRoute from "./routes/newClient.route.js";
-
-import { frontEndPort } from "./settings.js";
+import userRoute from "./routes/user.route.js";
+import userClientRoute from "./routes/userClient.route.js";
+import visitRemarkRoute from "./routes/visitRemark.route.js";
+import visitsRoute from "./routes/visits.route.js";
 
 // server.js
 
@@ -34,11 +32,11 @@ const connect = async () => {
 
 app.use(
   cors({
-    // origin: frontEndPort,
-    origin: "*",
+    origin: "https://rudra-app-frontend.vercel.app", // Replace with your frontend origin
     credentials: true,
   }),
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
