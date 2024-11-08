@@ -32,12 +32,8 @@ const connect = async () => {
   }
 };
 
-app.use(
-  cors({
-    origin: frontEndPort,
-    credentials: true,
-  })
-);
+app.use(cors());
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -47,12 +43,13 @@ app.use("/api/users", userRoute);
 app.use("/api/clients", clientRoute);
 app.use("/api/user-clients", userClientRoute);
 
-app.use("/api/clients/:id/clientVisits",
+app.use(
+  "/api/clients/:id/clientVisits",
   (req, res, next) => {
     req.clientID = req.params.id;
     next();
   },
-  clientVisitRoute
+  clientVisitRoute,
 );
 app.use("/api/clientVisits", visitsRoute);
 app.use("/api/visitRemark", visitRemarkRoute);
