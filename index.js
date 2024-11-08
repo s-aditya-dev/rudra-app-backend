@@ -34,7 +34,8 @@ const connect = async () => {
 
 app.use(
   cors({
-    origin: frontEndPort,
+    // origin: frontEndPort,
+    origin: "*",
     credentials: true,
   }),
 );
